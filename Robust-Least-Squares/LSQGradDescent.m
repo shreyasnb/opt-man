@@ -10,7 +10,7 @@ tolx = 1e-12;
 N = 1;
 alpha_0 = 1e-2;
 r = 1e-4;
-rho = sin(2*pi/6);
+rho = sin(2*pi/8);
 theta = asin(rho);
 theta_0 = 0;
 theta_x = 10*pi/180;
@@ -76,5 +76,5 @@ function g = gradf(x, Y, b)
 end
 
 function Bout = B(x, b, Y_hat, lambda)
-    Bout = x*x' - 2*b*x' + lambda*(Y_hat*Y_hat');
+    Bout = x*x' - b*x' - x*b' + lambda*(Y_hat*Y_hat');
 end

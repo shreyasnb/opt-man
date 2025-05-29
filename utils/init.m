@@ -12,8 +12,8 @@ function [b, x0, Y0, Y_hat] = init(problem)
         x0 = [cos(theta0); sin(theta0)];
         Y_hat = [1; 0];
     else
-        b = [cos(problem.data.theta_b); sin(problem.data.theta_b); 0];
-        x0 = [cos(theta0); sin(theta0); 0];
+        b = [cos(problem.data.theta_b); 0; sin(problem.data.theta_b)];
+        x0 = [cos(theta0); 0; sin(theta0)];
         Y_hat = [1; 0; 0];
     end
 end
