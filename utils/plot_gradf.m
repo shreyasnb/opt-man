@@ -1,4 +1,5 @@
-function f = plot_gradf(gfs)
+function f = plot_gradf(results)
+    gfs = results.gradf_store;
     N = length(gfs);
     norm_gfs = zeros(1,N);
     for i=1:N

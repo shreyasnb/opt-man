@@ -8,7 +8,7 @@ function problem = init(problem)
     thetax = rand(1)*(max(R)-min(R)) + min(R);
     theta_0 = problem.data.theta_0;
 
-    if(n==2 && k==1)
+    if(n==2)
         problem.data.b = [cos(problem.data.theta_b); sin(problem.data.theta_b)];
         problem.x0 = [cos(thetax); sin(thetax)];
         problem.data.Y_hat = [cos(theta_0); sin(theta_0)];
