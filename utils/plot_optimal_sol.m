@@ -9,9 +9,16 @@ function p = plot_optimal_sol(results, problem)
     x_store = results.x_store;
     proj_x_store = results.proj_x_store;
     Y_star = results.Y_star;
+    lambdas = results.lambda_store;
 
     x_opt = x_store(:,end);
     proj_x_opt = proj_x_store(:,end);
+
+    figure
+    plot(1:length(lambdas), lambdas)
+    xlabel('Iteration')
+    ylabel('$\lambda_k$')
+    grid on
     
     if(n==2 && k==1)
         xv = -2:2;
@@ -26,11 +33,15 @@ function p = plot_optimal_sol(results, problem)
         [X_fill_r, Y_fill_r] = rotate(X_fill, Y_fill, theta_0);
         fill(X_fill_r, Y_fill_r, 'red', 'EdgeColor', 'none', 'FaceAlpha', 0.2);
         scatter(b(1), b(2), 100,'blue', 'filled')
-        % for i=1:length(x_store)
-        %     s = scatter(proj_x_store(1,i), proj_x_store(2,i), 20, "k", 'filled');
-        %     % scatter(proj_x_store(1,i), proj_x_store(2,i), 20, 'green','filled');
+        N = length(x_store);
+        N_inst = 10;
+        % for i=0:N_inst
+        %     scatter(proj_x_store(1,1+int32(i*(N-1)/N_inst)), proj_x_store(2,1+int32(i*(N-1)/N_inst)), 40, "green", 'filled');
+        %     scatter(x_store(1,1+int32(i*(N-1)/N_inst)), x_store(2,1+int32(i*(N-1)/N_inst)), 40, 'yellow','filled','Marker','square');
         %     % alpha(s, tanh((i+1)/(length(x_store)+1)))
         % end
+        s=scatter(proj_x_store(1,:), proj_x_store(2,:), 40, "green", 'filled','^');
+        % alpha(s, tanh((1:N)/(N+1)));
         scatter(proj_x_opt(1), proj_x_opt(2), 100,'k', 'filled');
         [x1,y1] = rotate(Y_hat(1)*xv, Y_hat(2)*xv, theta);
         [x2, y2] = rotate(Y_hat(1)*xv, Y_hat(2)*xv, -theta);
