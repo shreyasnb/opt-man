@@ -30,7 +30,7 @@ hold on
 
 while (N<1e4)
     f_store = [f_store, f(x_old, A)];
-    gradf_store = [gradf_store, gradf(x_old, A)];
+    results.gradf_store = [results.gradf_store, gradf(x_old, A)];
     alpha_store = [alpha_store, alpha];
     v = gradf(x_old, A);
     alpha = alpha_0;
@@ -56,7 +56,7 @@ end
 plot_eigvectors(A)
 
 plot_convergence(A, f_store);
-plot_gradf(gradf_store);
+plot_gradf(results);
 plot(1:N, alpha_store);
 
 function cost = f(x,A)
