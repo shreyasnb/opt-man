@@ -12,7 +12,7 @@ zlabel('Z')
 grid on
 light
 
-% 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
+% 
 % alpha_store = [alpha_store, alpha];
 % alpha = alpha_0;
 % while true
